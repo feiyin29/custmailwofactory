@@ -17,21 +17,8 @@ public class CustomerMailApplication {
     /**
      * @param args the command line arguments
      */
-    /*private Customer customer;
-    public void getCustomerTypeFromUser(String customerType) {
-        customer = CustomerFactory.createCustomer(customerType);
-    }
-    */
-    public String generateMail(Customer customer) {
-        return customer.createMail();
-    }
-    
-    public static void main(String[] args) {
-        CustomerMailApplication app = new CustomerMailApplication();
-        Customer customer = null;
-        Scanner inp = new Scanner(System.in);
-        System.out.print("Please choose customer type 1. Regular, 2. Mountain, 3. Delinquent ");
-        int type = inp.nextInt();
+    private Customer customer;
+    public void getCustomerTypeFromUser(int type) {
         switch(type) {
             case 1:
                 customer = CustomerFactory.createCustomer("Regular");
@@ -44,6 +31,20 @@ public class CustomerMailApplication {
                 break;
             
         }
-        System.out.println(app.generateMail(customer));        
+    }
+    
+    public String generateMail() {
+        return customer.createMail();
+    }
+    
+    public static void main(String[] args) {
+        CustomerMailApplication app = new CustomerMailApplication();
+        //Customer customer = null;
+        Scanner inp = new Scanner(System.in);
+        System.out.print("Please choose customer type 1. Regular, 2. Mountain, 3. Delinquent ");
+        int type = inp.nextInt();
+        app.getCustomerTypeFromUser(type);
+        
+        System.out.println(app.generateMail());        
     }
 }
